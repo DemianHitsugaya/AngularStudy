@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./comp1.component.css']
 })
 export class Comp1Component implements OnInit {
+  texto: string;
+
+  saludar() {
+    this.texto = 'Hola Mundo desde COMPO1';
+  }
 
   constructor() { }
 

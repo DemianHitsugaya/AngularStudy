@@ -1,35 +1,21 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+import { Operaciones } from './operaciones';
 
-describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
+describe('Test para operaciones', () => {
+  describe('Test para suma y resta', () => {
+    const operaciones = new Operaciones();
+    it('Suma 2 numeros', () => {
+      expect(operaciones.sumar(3, 5)).toEqual(8);
+    });
+    it('Restar 2 numeros', () => {
+      expect(operaciones.restar(9, 5)).toEqual(4);
+    });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    it('Multiplicar 2 numeros', () => {
+      expect(operaciones.multiplicar(9, 5)).toEqual(45);
+    });
 
-  it(`should have as title 'HMAC'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('HMAC');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to HMAC!');
+    it('Dividir 2 numeros', () => {
+      expect(operaciones.dividir(9, 3)).toEqual(3);
+    });
   });
 });
