@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Operaciones } from './operaciones';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-root',
@@ -31,22 +32,36 @@ export class AppComponent {
   //   this.res4 = operaciones.dividir(12, 4);
   // }
 
-  fondoAmarillo = false;
-  letraGrande = false;
-  checkFondo(){
-    this.fondoAmarillo = !this.fondoAmarillo;
-  }
-  checkLetra(){
-    this.letraGrande = !this.letraGrande;
-  }
+  // fondoAmarillo = false;
+  // letraGrande = false;
+  // checkFondo(){
+  //   this.fondoAmarillo = !this.fondoAmarillo;
+  // }
+  // checkLetra(){
+  //   this.letraGrande = !this.letraGrande;
+  // }
 
-  asignaClases(){
-    let classes = {
-      fa: this.fondoAmarillo,
-      lg: this.letraGrande
+  // asignaClases(){
+  //   let classes = {
+  //     fa: this.fondoAmarillo,
+  //     lg: this.letraGrande
+  //   };
+
+  //   return classes;
+  // }
+
+  mostrar: boolean = false;
+  numeros: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  pares: boolean = true;
+  impares: boolean = true;
+  colorpar = 'blue';
+  colorInpar = 'red';
+
+  clActividad(valor) {
+    let clases = {
+      activo: valor, intactivo: !valor
     };
-
-    return classes;
+    return clases;
   }
 
 }

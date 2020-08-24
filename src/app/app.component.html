@@ -1,7 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align: center;">
+<!-- <div style="text-align: center;">
     <h1>Welcome to {{ title }}!</h1>
-</div>
+</div> -->
 
 <!-- <app-comp-deco miAttributo="Valor de muestra del atributop"></app-comp-deco> -->
 <!--
@@ -33,7 +33,7 @@
 <br>
 <hr>
 <app-complifehook [entradaHijo]="salidaPadre"></app-complifehook> -->
-
+<!--
 <input type="checkbox" (change)="checkFondo()" /> Fondo. (fondoAmarillo = {{ fondoAmarillo }})
 <br />
 <input type="checkbox" (change)="checkLetra()" /> Tam. Letra (letragrande = {{ letraGrande }})
@@ -43,7 +43,43 @@
     <br> Si fondoAmarillo = true -> el fondo será amarillo
     <br> Si letraGrande = true -> las letras serán grandes
 </div>
-<hr />
+<hr /> -->
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
 
+<h1>{{ title }}</h1>
+
+<div class="container" style="text-align: center;">
+    <button class="btn btn-success tamB" (click)="(mostrar =! mostrar); pares = true; impares = true">
+    Mostrar. (mostrar = {{ mostrar }})
+  </button>
+    <br />
+    <br />
+</div>
+<div class="container divBg" *ngIf="mostrar">
+    <input type="checkbox" name="pares" id="" [(ngModel)]="pares" />
+    <span [ngClass]="clActividad(pares)">Pares</span>
+    <br />
+    <input type="checkbox" name="impares" id="" [(ngModel)]="impares" />
+    <span [ngClass]="clActividad(impares)">Impares</span>
+    <br />
+    <div class="list-group-item-info" *ngFor="let numero of numeros; let i = index">
+        <div [ngSwitch]="i % 2">
+            <div *ngSwitchCase="'1'">
+                <p *ngIf="pares">
+                    <span [ngStyle]="{ color: colorpar }">
+            {{ i + 1 }} - Numero: <b>{{ numero }}</b>
+          </span>
+                </p>
+            </div>
+            <div *ngSwitchCase="'0'">
+                <p *ngIf="impares">
+                    <span [ngStyle]="{ color: colorInpar }">
+            {{ i + 1 }} - Numero: <b>{{ numero }}</b>
+          </span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 <router-outlet></router-outlet>
